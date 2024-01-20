@@ -1,0 +1,107 @@
+Install packages required : 
+sequelize
+global package : mysql2 sequelize-cli
+
+Creating models:
+Post Model--
+Command: sequelize model:generate --name Post --attributes title:string,content:text,imageUrl:string,categoryId:integer,userId:integer
+
+Output:
+Sequelize CLI [Node: 18.15.0, CLI: 6.6.2, ORM: 6.35.2]
+
+New model was created at C:\Users\Mohd Abuzaid\Desktop\Website Projects\Node-MySQL-BlogApp\api\models\post.js .
+New migration was created at C:\Users\Mohd Abuzaid\Desktop\Website Projects\Node-MySQL-BlogApp\api\migrations\20240119200740-create-post.js
+
+User Model:
+Command: sequelize model:generate --name User --attributes name:string,email:string,password:string
+
+Output:
+Sequelize CLI [Node: 18.15.0, CLI: 6.6.2, ORM: 6.35.2]
+
+New model was created at C:\Users\Mohd Abuzaid\Desktop\Website Projects\Node-MySQL-BlogApp\api\models\user.js .
+New migration was created at C:\Users\Mohd Abuzaid\Desktop\Website Projects\Node-MySQL-BlogApp\api\migrations\20240119201419-create-user.js .
+
+
+Next : Start Xampp and start Apache and MySql Server
+then head up to http://localhost/phpmyadmin/
+Create Database there
+Then setup config.json and start migrating of models to database to create tables.
+
+Migration command:
+sequelize db:migrate
+
+Sequelize CLI [Node: 18.15.0, CLI: 6.6.2, ORM: 6.35.2]
+
+Loaded configuration file "config\config.json".
+Using environment "development".
+== 20240119201228-create-post: migrating =======
+== 20240119201228-create-post: migrated (0.019s)
+
+== 20240119201419-create-user: migrating =======
+== 20240119201419-create-user: migrated (0.014s)
+
+== 20240119201541-create-category: migrating =======
+== 20240119201541-create-category: migrated (0.013s)
+
+== 20240119201730-create-comment: migrating =======
+== 20240119201730-create-comment: migrated (0.013s)
+
+
+
+
+
+
+Definition:
+Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite, and Microsoft SQL Server. Its features are solid transaction support, relations, eager and lazy loading, read replication and many more.
+
+Features of Sequelize:
+
+Sequelize is a third-party package to be precise its an Object-Relational Mapping Library(ORM)..
+Standardization ORMs usually have a single schema definition in the code. This makes it very clear what the schema is, and very simple to change it.
+No need to learn SQL – queries are written in plain JavaScript.
+
+
+
+`Sequelize CLI` (Command Line Interface) is a command-line tool provided by Sequelize to assist developers in managing database-related tasks, such as generating models, migrations, and seeds. It simplifies the process of interacting with Sequelize and helps automate common development tasks associated with database management.
+
+Here are some key functionalities provided by Sequelize CLI:
+
+1. **Initialization:** You can use Sequelize CLI to initialize a new Sequelize project by running the `sequelize init` command. This sets up the project structure, configuration files, and directories for models, migrations, and seeders.
+
+   ```bash
+   sequelize init
+   ```
+
+2. **Model Generation:** Sequelize CLI allows you to generate model files easily. Models define the structure of your data and how it is mapped to the database. The following command creates a new model:
+
+   ```bash
+   sequelize model:generate --name User --attributes username:string,email:string
+   ```
+
+   This command generates a model file for a `User` with `username` and `email` attributes.
+
+3. **Migration Generation:** Migrations in Sequelize are used to manage changes to the database schema. Sequelize CLI can generate migration files based on changes you make to your models. For example:
+
+   ```bash
+   sequelize migration:generate --name add_age_to_users
+   ```
+
+   This command generates a migration file that you can then edit to define changes to the database schema, such as adding a new column.
+
+4. **Database Synchronization:** The CLI provides commands to synchronize your models with the database, applying any pending migrations. For example:
+
+   ```bash
+   sequelize db:migrate
+   ```
+
+   This command runs any pending migrations, updating the database schema accordingly.
+
+5. **Seed Generation:** Seed files are used to populate your database with initial data. Sequelize CLI can generate seed files for you:
+
+   ```bash
+   sequelize seed:generate --name demo-user
+   ```
+
+   This command generates a seed file that you can edit to define the initial data you want to insert into the database.
+
+Sequelize CLI simplifies and automates the process of managing database-related tasks, making it easier for developers to work with Sequelize in a structured and organized way.
