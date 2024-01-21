@@ -12,7 +12,6 @@ app.use(express.urlencoded({extended:true}))
 app.use('/post',postRouter)
 app.use('/user',userRouter)
 app.use('/comment',commentRouter)
-
 app.listen(port,()=>{
      console.log(`Server is listening to ${port}`);
 })

@@ -6,7 +6,7 @@ const createComment = async (req, res) => {
           const comment = {
                content: req.body.content,
                postId: req.body.post_id,
-               userId: 1
+               userId: req.user.userId
           };
 
           const schema = {
@@ -89,7 +89,7 @@ const updateComment = async (req, res) => {
                content: req.body.content
           };
 
-          const userId = 1;
+          const userId = req.user.userId;
 
           const schema = {
                content: { type: "string", optional: false, max: "500" },

@@ -23,7 +23,7 @@ const createPost = async (req, res) => {
                content: req.body.content,
                imageUrl: req.body.image_url,
                categoryId: req.body.category_id,
-               userId: 1,
+               userId: req.user.userId,
           };
 
           const schema = {
@@ -105,7 +105,8 @@ const updatePost = async (req, res) => {
                imageUrl: req.body.image_url||currPost.imageUrl,
                categoryId: req.body.category_id||currPost.categoryId,
           }
-          const userId = 1;
+          console.log(req.user);
+          const userId = req.user.userId;
           // Model.update(
           // Data to be updated
           // { /* updated fields/values */ },
@@ -152,7 +153,7 @@ const updatePost = async (req, res) => {
 const deletePost = async (req, res) => {
      try {
           const postId = req.params.postId
-          const userId = 1
+          const userId = req.user.userId
           if (!postId) {
                res.status(404).json({ success: false, msg: `No post with id: ${postId}` })
           }
